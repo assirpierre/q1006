@@ -2,18 +2,19 @@ package qmw
 
 class Adicionais {
 
-	String descricaoestab
+    String nome
+	String descricao
 	double preco
-	static belongsTo = [estab: Estabelecimento, grupoAdicionais: GrupoAdicionais, item: Item]
+	static belongsTo = [estab: Estabelecimento, grupoAdicionais: GrupoAdicionais]
 	
 	String toString () {
-		"${item} - ${descricaoestab}"
+		"${nome}"
 	}
 	
     static constraints = {
 		grupoAdicionais(blank:false)
-		item(blank: false, unique: ['estab','grupoAdicionais'])
-		descricaoestab(maxSize: 300)
+        nome(maxSize: 30, blank:false)
+		descricao(maxSize: 300)
 		preco(blank: false, matches: /\d+/)
 		estab(display: false)
     }

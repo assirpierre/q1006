@@ -1,5 +1,7 @@
 package qmw
 
+import grails.converters.XML
+
 class MenuController {
 
 	def beforeInterceptor = [action:this.&auth]
@@ -11,8 +13,7 @@ class MenuController {
 			params.sort = "sequencia"
 		def vvmenuPrincipal = params['menuPrincipal']
 		if (vvmenuPrincipal == null)
-			vvmenuPrincipal = MenuPrincipal.findByEstab(session.estab)?.id
-		
+			vvmenuPrincipal =  MenuPrincipal.findByEstab(session.estab)?.id
 		def menuInstance = Menu.where {
 			estab == session.estab
 			and
@@ -60,8 +61,15 @@ class MenuController {
 
 	def auth() {
 		if(!session.estab) {
-			redirect(controller:"Estabelecimento", action:"../")
-			return false
+            println params['chave']
+            if(params['chave'] != "823742jnkjdshfsa[sdf'sasd[]adf]084ASFF"){
+                redirect(controller:"Estabelecimento")
+                return false
+            }
 		}
 	}
+
+    def exporta() {
+        render MenuPrincipal.where{estab.id == 218}.list() + Menu.where{estab.id == 218}.list() as XML;
+    }
 }

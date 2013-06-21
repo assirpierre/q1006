@@ -10,7 +10,6 @@ class LogAcesso {
     }
 
 	static mapping = {
-		id generator:'native', params:[sequence:'log_acessoid_seq']		
 		metodo index: 'logAcesso_metodo_Idx'
 	}		
 }

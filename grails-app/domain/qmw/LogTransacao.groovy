@@ -13,6 +13,5 @@ class LogTransacao {
     }
 	static mapping = {
 		retorno type: 'text'
-		id generator:'native', params:[sequence:'log_transacaoid_seq']
 	}
 }

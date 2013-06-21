@@ -13,7 +13,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:postgresql://localhost:5432/qmw"
+            url = "jdbc:postgresql://localhost:5433/qmw"
             username = "sicon"
             password = "sicon"
 //			url = "jdbc:postgresql://qmenu.com.br:5433/qmenu"

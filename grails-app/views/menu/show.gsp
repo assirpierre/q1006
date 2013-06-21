@@ -31,25 +31,25 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${menuInstance?.item}">
+
+                <g:if test="${menuInstance?.nome}">
+                    <li class="fieldcontain">
+                        <span id="nome-label" class="property-label"><g:message code="menu.nome.label" default="nome" /></span>
+
+                        <span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${menuInstance}" field="nome"/></span>
+
+                    </li>
+                </g:if>
+
+				<g:if test="${menuInstance?.descricao}">
 				<li class="fieldcontain">
-					<span id="item-label" class="property-label"><g:message code="menu.item.label" default="Item" /></span>
-					
-						<span class="property-value" aria-labelledby="item-label"><g:link controller="item" action="show" id="${menuInstance?.item?.id}">${menuInstance?.item?.encodeAsHTML()}</g:link></span>
-					
+					<span id="descricao-label" class="property-label"><g:message code="menu.descricao.label" default="descricao" /></span>
+
+						<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${menuInstance}" field="descricao"/></span>
+
 				</li>
 				</g:if>
-			
-				<g:if test="${menuInstance?.descricaoestab}">
-				<li class="fieldcontain">
-					<span id="descricaoestab-label" class="property-label"><g:message code="menu.descricaoestab.label" default="Descricaoestab" /></span>
-					
-						<span class="property-value" aria-labelledby="descricaoestab-label"><g:fieldValue bean="${menuInstance}" field="descricaoestab"/></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${menuInstance?.preco}">
 				<li class="fieldcontain">
 					<span id="preco-label" class="property-label"><g:message code="menu.preco.label" default="Preco" /></span>
@@ -83,9 +83,6 @@
 					<g:hiddenField name="id" value="${menuInstance?.id}" />
 					<g:link class="edit" action="edit" id="${menuInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:link class="create" controller="pedido" action="listplocal" params="['estabelecimento.id': estabelecimentoInstance?.id]">
-						${message(code: 'default.proximopasso.label')}
-						${message(code: 'default.list.label', args: [message(code: 'pedido.label') +' ' + message(code: 'pedidoLocal.label')])}</g:link>
 				</fieldset>
 			</g:form>
 		</div>

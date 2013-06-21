@@ -30,19 +30,19 @@ class EstabelecimentoService {
         }
         def a = Adicionais.where { estab.id == 1 }
         a.each{
-            new Adicionais(grupoAdicionais: GrupoAdicionais.findByEstabAndDescricao(e, it.grupoAdicionais?.descricao), item : it.item, preco : it.preco, descricaoestab : it.descricaoestab, estab : e).save(flush: true)
+            new Adicionais(grupoAdicionais: GrupoAdicionais.findByEstabAndDescricao(e, it.grupoAdicionais?.descricao), nome : it.nome, preco : it.preco, descricao : it.descricao, estab : e).save(flush: true)
         }
         def mp = MenuPrincipal.where { estab.id == 1 }
         mp.each{
             new MenuPrincipal(tipoCobranca : it.tipoCobranca, localAtendimento: it.localAtendimento, qtdeitem: it.qtdeitem,
-                    item : it.item, sequencia : it.sequencia, imprimeCupom : it.imprimeCupom, estab : e).save(flush: true)
+                    nome : it.nome, sequencia : it.sequencia, imprimeCupom : it.imprimeCupom, estab : e).save(flush: true)
         }
         def m = Menu.where { estab.id == 1 }
         m.each{
-            new Menu(menuPrincipal : MenuPrincipal.findByEstabAndItem(e, it.menuPrincipal.item),
+            new Menu(menuPrincipal : MenuPrincipal.findByEstabAndNome(e, it.menuPrincipal.nome),
                     sequencia: it.sequencia,
                     grupoAdicionais: GrupoAdicionais.findByEstabAndDescricao(e, it.grupoAdicionais?.descricao),
-                    item : it.item, preco : it.preco, descricaoestab : it.descricaoestab, estab : e).save(flush: true)
+                    nome : it.nome, preco : it.preco, descricao : it.descricao, estab : e).save(flush: true)
         }
     }
 }

@@ -28,7 +28,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${pedidoInstanceTotal}" params="${[mesa:pedidoInstanceList? pedidoInstanceList.first().mesa:"", pedido:pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.id:"", sequencia: pedidoInstanceList? pedidoInstanceList.first().codigo:""]}" />
+				<g:paginate total="${pedidoInstanceTotal}" params="${[mesa:pedidoInstanceList? pedidoInstanceList.first().mesa:"", pedido:pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.id:"", sequencia: pedidoInstanceList? pedidoInstanceList.first().sequencia:""]}" />
 				<g:if test="${pedidoInstanceTotal>0}">
 				<a class="list" onclick="javascript: reImprimePedido()"><g:message code="pedido.reimprimecupom.label" /></a>
 				<a class="list" onclick="javascript: reImprimeFechamento()"><g:message code="pedido.reimprimefechamento.label" /></a>

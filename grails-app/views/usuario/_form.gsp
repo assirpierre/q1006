@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'codigo', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'sequencia', 'error')} ">
 	<label for="codigo">
 		<g:message code="usuario.codigo.label" default="Codigo" />
 		

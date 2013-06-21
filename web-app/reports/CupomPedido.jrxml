@@ -21,19 +21,21 @@
 	<field name="mesa.numero" class="java.lang.Integer"/>
 	<field name="estab.nomefantasia" class="java.lang.String"/>
 	<field name="estab.telefone" class="java.lang.String"/>
-	<field name="utilizacaoMesa.nome" class="java.lang.String"/>
-	<field name="utilizacaoMesa.id" class="java.lang.Number"/>
-	<field name="utilizacaoMesa.dataFim" class="java.lang.String"/>
+	<field name="pedidoCapa.nome" class="java.lang.String"/>
+	<field name="pedidoCapa.id" class="java.lang.Number"/>
+	<field name="pedidoCapa.dataFim" class="java.lang.String"/>
 	<field name="estab.endereco" class="java.lang.String"/>
 	<field name="estab.numero" class="java.lang.String"/>
 	<field name="estab.cidade" class="java.lang.String"/>
 	<field name="estab.estado" class="java.lang.String"/>
-	<field name="codigo" class="java.lang.String"/>
+	<field name="sequencia" class="java.lang.String"/>
 	<field name="usuario.codigo" class="java.lang.String"/>
 	<field name="observacao" class="java.lang.String"/>
 	<field name="item" class="java.lang.String"/>
 	<field name="qtde" class="java.lang.Double"/>
-	<field name="itemAdd" class="java.lang.String"/>
+	<field name="itemDescricao" class="java.lang.String"/>
+	<field name="itemAdicional" class="java.lang.String"/>
+	<field name="itemAdicionalDescricao" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -60,11 +62,11 @@
 				<textFieldExpression><![CDATA[$P{qtde.label}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="728f92dd-ca2c-4206-a6f0-347c1e39d06d" x="2" y="49" width="91" height="12"/>
+				<reportElement uuid="728f92dd-ca2c-4206-a6f0-347c1e39d06d" x="2" y="49" width="107" height="12"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{mesa.label} + ": " + $F{mesa.numero} + " - " + $F{utilizacaoMesa.nome}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{mesa.label} + ": " + $F{mesa.numero} + " - " + $F{pedidoCapa.nome}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement uuid="d0aa5e29-3cde-48b5-9444-46f139ec80a9" x="2" y="32" width="202" height="14"/>
@@ -89,7 +91,7 @@
 				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{pedido.label} + ": " + $F{utilizacaoMesa.id} + " - " + $F{codigo}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{pedido.label} + ": " + $F{pedidoCapa.id} + " - " + $F{sequencia}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -114,7 +116,9 @@
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{item} +
-($F{itemAdd}.equals("")?"":"\nAD:" + $F{itemAdd}) +
+($F{itemDescricao}.equals("")?"":" (" + $F{itemDescricao} + ")") +
+($F{itemAdicional}.equals("")?"":"\nAD:" + $F{itemAdicional}) +
+($F{itemAdicionalDescricao}.equals("")?"":"(" + $F{itemAdicionalDescricao} + ")") +
 ($F{observacao}.equals("")?"":"\nOBS:" + $F{observacao})]]></textFieldExpression>
 			</textField>
 		</band>

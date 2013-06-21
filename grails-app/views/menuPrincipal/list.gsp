@@ -26,7 +26,7 @@
 					<tr>
 					
 						<g:sortableColumn property="sequencia" title="${message(code: 'menuPrincipal.sequencia.label', default: 'Sequencia')}" />
-						<g:sortableColumn property="descricao" title="${message(code: 'menuPrincipal.item.label', default: 'Item')}" />
+						<g:sortableColumn property="nome" title="${message(code: 'menuPrincipal.nome.label', default: 'Nome')}" />
 						<g:sortableColumn property="qtdeitem" title="${message(code: 'menuPrincipal.qtdeitem.label', default: 'Qtdeitem')}" />
 						<g:sortableColumn property="tipoCobranca" title="${message(code: 'menuPrincipal.tipoCobranca.label', default: 'Tipo Cobranca')}" />
 						<g:sortableColumn property="localAtendimento" title="${message(code: 'menuPrincipal.localAtendimento.label', default: 'localAtendimento')}" />
@@ -36,8 +36,8 @@
 				<tbody>
 				<g:each in="${menuPrincipalInstanceList}" status="i" var="menuPrincipalInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-						<td>${fieldValue(bean: menuPrincipalInstance, field: "sequencia")}</td>
-						<td><g:link action="show" id="${menuPrincipalInstance.id}">${fieldValue(bean: menuPrincipalInstance, field: "item")}</g:link></td>
+						<td><g:link action="show" id="${menuPrincipalInstance.id}">${fieldValue(bean: menuPrincipalInstance, field: "sequencia")}</g:link></td>
+						<td><g:link action="show" id="${menuPrincipalInstance.id}">${fieldValue(bean: menuPrincipalInstance, field: "nome")}</g:link></td>
 						<td>${fieldValue(bean: menuPrincipalInstance, field: "qtdeitem")}</td>
 						<td>${fieldValue(bean: menuPrincipalInstance, field: "tipoCobranca")}</td>
 						<td>${fieldValue(bean: menuPrincipalInstance, field: "localAtendimento")}</td>

@@ -9,24 +9,27 @@
 	</label>
 	<g:select id="grupoAdicionais" name="grupoAdicionais.id" from="${qmw.GrupoAdicionais.findAllByEstab(session.estab)}" optionKey="id" required="" value="${adicionaisInstance?.grupoAdicionais?.id}" class="many-to-one" noSelection="['': '']"/>
     <g:helpBalloon code="adicionais.grupoAdicionais.label"/>
+    <div class="linkadd">
+        <g:link controller="grupoAdicionais" class="list" action="create"><g:message code="default.adicionar.label" /></g:link>
+    </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adicionaisInstance, field: 'item', 'error')} required">
-	<label for="item">
-		<g:message code="adicionais.item.label" default="Item" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="item" name="item.id" from="${qmw.Item.findAllByTipo("Produto")}" optionKey="id" required="" value="${adicionaisInstance?.item?.id}" class="many-to-one" noSelection="['': '']"/>
-    <g:helpBalloon code="adicionais.item.label"/>
+<div class="fieldcontain ${hasErrors(bean: adicionaisInstance, field: 'nome', 'error')} ">
+    <label for="nome">
+        <g:message code="adicionais.nome.label" default="nome" />
+    </label>
+    <g:textField name="nome" size="30" maxlength="30" value="${adicionaisInstance?.nome}"/>
+    <g:helpBalloon code="adicionais.nome.label"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: adicionaisInstance, field: 'descricaoestab', 'error')} ">
-	<label for="descricaoestab">
-		<g:message code="adicionais.descricaoestab.label" default="Descricaoestab" />
+
+<div class="fieldcontain ${hasErrors(bean: adicionaisInstance, field: 'descricao', 'error')} ">
+	<label for="descricao">
+		<g:message code="adicionais.descricao.label" default="descricao" />
 		
 	</label>
-	<g:textField name="descricaoestab" size="70" maxlength="300" value="${adicionaisInstance?.descricaoestab}"/>
-    <g:helpBalloon code="adicionais.descricaoestab.label"/>
+	<g:textField name="descricao" size="70" maxlength="300" value="${adicionaisInstance?.descricao}"/>
+    <g:helpBalloon code="adicionais.descricao.label"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: adicionaisInstance, field: 'preco', 'error')} required">

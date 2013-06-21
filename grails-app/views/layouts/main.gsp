@@ -31,7 +31,7 @@
                             <td style="padding: 0"  bgcolor="#FFFFFF">
                                 <a style="float: left" href="http://www.qmenu.com.br"><img src="${resource(dir: 'images', file: 'qmenu.png')}" /></a>
                             </td>
-                            <td  bgcolor="#FFFFFF" >
+                            <td bgcolor="#FFFFFF" id="logo">
                                 ${session.estab?.nomefantasia }
                             </td>
                         </tr>
@@ -43,14 +43,10 @@
                     <table class="tableconteudo" >
                         <tr>
                             <td style="border-top:0">
-                                <ul class="navmenu" style="height: 26px; padding-left: 1.8em;">
+                                <ul class="navmenu" style="height: 26px; padding-left: 16em;">
                                     <li><a href="${createLink(uri: '/estabelecimento')}"><g:message code="estabelecimento.label"/></a></li>
                                     <li><a href="${createLink(uri: '/usuario')}"><g:message code="usuario.label"/></a></li>
                                     <li><a href="${createLink(uri: '/mesa')}"><g:message code="${session.estab?session.estab.sistemaTrabalho:"mesa"}.label"/></a></li>
-                                    <li><a href="${createLink(uri: '/item')}"><g:message code="item.label"/></a></li>
-                                    <li><a href="${createLink(uri: '/grupoAdicionais')}"><g:message code="grupoAdicionais.label"/></a></li>
-                                    <li><a href="${createLink(uri: '/adicionais')}"><g:message code="adicionais.label"/></a></li>
-                                    <li><a href="${createLink(uri: '/menuPrincipal')}"><g:message code="menuPrincipal.label"/></a></li>
                                     <li><a href="${createLink(uri: '/menu')}"><g:message code="menu.label"/></a></li>
                                     <li><a href="${createLink(uri: '/pedido/listplocal')}"><g:message code="pedido.label"/></a></li>
                                 </ul>

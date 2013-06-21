@@ -4,13 +4,7 @@ import groovy.time.*
 import java.text.DateFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import net.sf.jasperreports.engine.JRExporter
-import net.sf.jasperreports.engine.JasperPrint
-import net.sf.jasperreports.engine.JasperFillManager
-import net.sf.jasperreports.engine.JRExporterParameter
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource
-import net.sf.jasperreports.engine.export.JRPdfExporter
-import net.sf.jasperreports.engine.export.JRPdfExporterParameter
+
 import org.codehaus.groovy.grails.plugins.jasper.JasperExportFormat
 import org.codehaus.groovy.grails.plugins.jasper.JasperReportDef
 
@@ -21,9 +15,9 @@ class ImpressaoCupomController {
 		def cumpomID = (long)Integer.parseInt(params['cupomId'])
 		def sequencia = Integer.parseInt(params['sequencia'])
 		def pedidoInstance = Pedido.where {
-			utilizacaoMesa.id == cumpomID
+			pedidoCapa.id == cumpomID
 			and
-			codigo == sequencia
+			Pedido.sequencia == sequencia
 		}
 		HashMap<String,String> parameters = new HashMap<String,String>()
 		parameters.put("IMAGE_DIR","${servletContext.getRealPath('/images')}/")
@@ -45,7 +39,7 @@ class ImpressaoCupomController {
 	def fechamento() {
 		def cumpomID = (long)Integer.parseInt(params['cupomId'])
 		def pedidoInstance = Pedido.where {
-			utilizacaoMesa.id == cumpomID
+			pedidoCapa.id == cumpomID
 		}
 		HashMap<String,String> parameters = new HashMap<String,String>()
 		parameters.put("IMAGE_DIR","${servletContext.getRealPath('/images')}/")
@@ -62,7 +56,7 @@ class ImpressaoCupomController {
 		parameters.put("rodapeCupom",message(code: 'pedido.rodapeCupom'))
 		NumberFormat formatter = NumberFormat.getCurrencyInstance()
         DateFormat fDate = new SimpleDateFormat('E, dd MMM yyyy HH:mm')
-		UtilizacaoMesa u = pedidoInstance.first().utilizacaoMesa
+		PedidoCapa u = pedidoInstance.first().pedidoCapa
 		parameters.put("data",fDate.format(u.dataFim).toString())
 		TimeDuration td = TimeCategory.minus( u.dataFim, u.dataInicio )
 		parameters.put("tempoPermanencia",td.getHours() + ":" + String.format('%02d',td.getMinutes()))

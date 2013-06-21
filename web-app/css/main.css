@@ -49,12 +49,9 @@ body {
 }
 
 #logo {
-    background-image: url("../images/fundo.png");
-	position: fixed;
-	width: 100%;
-    height: 1.8em;
-	top:0;
-    color: #000;
+    text-align: right;
+    color: #919395;
+    padding: 0;
 	font-weight: bold;
 	font-size: 3.5em;		
 }
@@ -108,7 +105,7 @@ img {
 
 #grailsLogo a {
 	display: inline-block;
-	margin: 1em;
+	margin: 0em;
 }
 
 .content {
@@ -614,6 +611,42 @@ th:hover, tr:hover {
 	background-color: transparent;
 	color: #444444;
 	text-decoration: underline;
+
+}.linkadd {
+    position: relative;
+    display: inline-block;
+
+}
+
+.linkadd a,
+.linkadd .currentStep {
+    background-image: url(../images/skin/database_add.png);
+    background-position: 0.3em center;
+    background-repeat: no-repeat;
+    text-indent: 15px;
+	color: #FFF;
+	display: inline-block;
+	margin: 0 0.1em;
+	padding: 0.25em 0.7em;
+	text-decoration: none;
+	   -moz-border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	        border-radius: 0.3em;
+}
+
+.linkadd a:hover, .linkadd a:focus,
+.linkadd .currentStep {
+	background-color: #999999;
+	color: #ffffff;
+	outline: none;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.no-borderradius .linkadd a:hover, .no-borderradius .linkadd a:focus,
+.no-borderradius .linkadd .currentStep {
+	background-color: transparent;
+	color: #444444;
+	text-decoration: underline;
 }
 
 /* ACTION BUTTONS */
@@ -701,26 +734,6 @@ a.skip {
 	left: -9999px;
 }
 
-.corpo {
-	max-width: 960px;
-	margin: 0 auto;
-	position: relative;
-	margin-top: 7em;
-    background-image: url("../images/fundo.png");
-	border: .2em solid #fff;
-	padding: .5em;
-	-moz-box-shadow: 0px 0px 1.25em #ccc;
-	-webkit-box-shadow: 0px 0px 1.25em #ccc;
-	box-shadow: 0px 0px 1.25em #ccc;
-	-moz-border-radius: 0.6em;
-	-webkit-border-radius: 0.6em;
-	border-radius: 0.6em;
-}
-.ie6 corpo,
-.ie7 corpo,
-.ie8 corpo {
-}
-
 .tablebody {
 	width: 100%;
     height: 100%;
@@ -738,6 +751,7 @@ a.skip {
     height: 100%;
     background-image: url("../images/fundo.png");
     border: 0;
+    overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 }
 
 .tableconteudo th:hover, .corpodindex tr:hover {

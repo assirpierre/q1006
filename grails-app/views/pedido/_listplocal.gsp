@@ -20,7 +20,7 @@
 						<td>${fieldValue(bean: pedidoInstance, field: "menuPrincipal")}</td>
 						<td>${fieldValue(bean: pedidoInstance, field: "item")}</td>
 						<td>${fieldValue(bean: pedidoInstance, field: "qtde")}</td>
-						<td>${fieldValue(bean: pedidoInstance, field: "itemAdd")}</td>					
+						<td>${fieldValue(bean: pedidoInstance, field: "itemAdicional")}</td>
 						<td>${fieldValue(bean: pedidoInstance, field: "observacao")}</td>
 						<td>
 							<input onclick="atender(${pedidoInstance?.id})" type="button" value="${message(code: 'pedido.atender.button', default: 'Atender')}">

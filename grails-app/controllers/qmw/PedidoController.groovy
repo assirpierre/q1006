@@ -8,13 +8,13 @@ class PedidoController {
 
 	def listreimpressao(Integer max) {
 		params.max = Math.min(max ?: 9, 100)
-		params.sort='codigo'
+		params.sort='sequencia'
 		params.order='asc'
 		def pedidoInstance = Pedido.where {
-			utilizacaoMesa.id == pedidoService.getUPedido(params, session)
+			pedidoCapa.id == pedidoService.getUPedido(params, session)
 		}
 		pedidoInstance = pedidoInstance.where {
-			codigo == pedidoService.getSeq(pedidoInstance, params)
+			sequencia == pedidoService.getSeq(pedidoInstance, params)
 		}
 		def model =[pedidoInstanceList: pedidoInstance.list(params), pedidoInstanceTotal: pedidoInstance.count()]
 		if (request.xhr){
@@ -36,7 +36,7 @@ class PedidoController {
 			redirect(action: "listpmesa")
 			return
 		}else{
-			UtilizacaoMesa uM = UtilizacaoMesa.findById(params['pedido'])
+			PedidoCapa uM = PedidoCapa.findById(params['pedido'])
 			uM.setServico(servico)
 			uM.setTotal(servico + uM.subTotal)
 			uM.save(flush: true)
@@ -50,7 +50,7 @@ class PedidoController {
 		if (params['mesa'] != null)
 			vvmesa = params['mesa']
 		def pedidoInstance = Pedido.where {
-			utilizacaoMesa.id == pedidoService.getUPedido(params, session)
+			pedidoCapa.id == pedidoService.getUPedido(params, session)
 		}
 		def model =[pedidoInstanceList: pedidoInstance.list(params), pedidoInstanceTotal: pedidoInstance.count()]
 		if (request.xhr){
@@ -81,12 +81,12 @@ class PedidoController {
 			}
 			if(pedidoNaoImpresso.count() > 0){
 				Pedido p = pedidoNaoImpresso.list().first();
-				render "<script>jQuery('#relatorio')[0].src= '../ImpressaoCupom/pedido?cupomId=" + p.utilizacaoMesa.id  + "&sequencia=" + p.codigo + "';</script>"
+				render "<script>jQuery('#relatorio')[0].src= '../ImpressaoCupom/pedido?cupomId=" + p.pedidoCapa.id  + "&sequencia=" + p.sequencia + "';</script>"
 			}
 			if(session.estab.localFechamento == lAtendimento){
 				def fechamentoNaoImpresso = pedidoService.getFechamentoNaoImpresso(session)
 				if(fechamentoNaoImpresso)
-					render "<script>jQuery('#relatoriofechamento')[0].src= '../ImpressaoCupom/fechamento?cupomId=" + fechamentoNaoImpresso.utilizacaoMesa.id + "';</script>"
+					render "<script>jQuery('#relatoriofechamento')[0].src= '../ImpressaoCupom/fechamento?cupomId=" + fechamentoNaoImpresso.pedidoCapa.id + "';</script>"
 			}
 		}else
 			model
@@ -104,7 +104,7 @@ class PedidoController {
 
 	def auth() {
 		if(!session.estab) {
-			render "<script>window.location.href='../';</script>"
+            redirect(controller:"Estabelecimento")
 			return false
 		}
 	}

@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list menuPrincipal">
 			
-				<g:if test="${menuPrincipalInstance?.item}">
+				<g:if test="${menuPrincipalInstance?.nome}">
 				<li class="fieldcontain">
-					<span id="item-label" class="property-label"><g:message code="menuPrincipal.tipo.label" default="Tipo" /></span>
+					<span id="item-label" class="property-label"><g:message code="menuPrincipal.nome.label" default="Tipo" /></span>
 					
-						<span class="property-value" aria-labelledby="item-label"><g:fieldValue bean="${menuPrincipalInstance}" field="item"/></span>
+						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${menuPrincipalInstance}" field="nome"/></span>
 					
 				</li>
 				</g:if>
@@ -74,8 +74,8 @@
 				</g:if>
 				<g:if test="${menuPrincipalInstance?.menu}">
 				<li class="fieldcontain">
-					<span id="usuario-label" class="property-label"><g:message code="menu.menu" default="Menu" /></span>
-					
+					<span id="menu-label" class="property-label"><g:message code="menu.label" default="Menu" /></span>
+
 						<g:each in="${menuPrincipalInstance.menu}" var="u">
 						<span class="property-value" aria-labelledby="menu-label"><g:link controller="menu" action="show" id="${u.id}">${u?.encodeAsHTML()}</g:link></span>
 						</g:each>
@@ -90,9 +90,6 @@
 					<g:hiddenField name="id" value="${menuPrincipalInstance?.id}" />
 					<g:link class="edit" action="edit" id="${menuPrincipalInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:link class="create" controller="menu" action="create" params="['estabelecimento.id': estabelecimentoInstance?.id]">
-						${message(code: 'default.proximopasso.label', args: [message(code: 'usuario.label', default: 'Proximo passo')])}
-						${message(code: 'default.add.label', args: [message(code: 'menu.label', default: 'Menu')])}</g:link>
 				</fieldset>
 			</g:form>
 		</div>

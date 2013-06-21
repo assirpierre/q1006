@@ -15,21 +15,21 @@ class PedidoService {
 		pedido.setSituacao("D")
 		pedido.setTotal(0)
 		pedido.save(flush: true)
-        def tPedido = Pedido.where { utilizacaoMesa.id == pedido.utilizacaoMesaId}.get() {
+        def tPedido = Pedido.where { pedidoCapa.id == pedido.pedidoCapaId}.get() {
             projections {
                 sum('total')
             }
         }
-        UtilizacaoMesa uM = UtilizacaoMesa.findById(pedido.utilizacaoMesaId)
+        PedidoCapa uM = PedidoCapa.findById(pedido.pedidoCapaId)
         uM.subTotal = tPedido
         uM.total = tPedido + uM.servico
         uM.save(flush: true)
 	}
 
 
-	def getUtilizacaoMesa(maior, params, session) {
+	def getpedidoCapa(maior, params, session) {
 		def vvmesa = numeroService.getInt(params['mesa'].toString())
-		def u = UtilizacaoMesa.createCriteria()
+		def u = PedidoCapa.createCriteria()
 		def uMesa = u.get() {
 			eq("estab", session.estab)
 			mesa{ eq("numero", vvmesa)}
@@ -48,7 +48,7 @@ class PedidoService {
 		def fechamentoNaoImpresso = p.get() {
 			and{
 				eq("estab", session.estab)
-				utilizacaoMesa {
+				pedidoCapa {
 					and {
 						eq("cupomImpresso", false)
 						isNotNull("dataFim")
@@ -75,23 +75,23 @@ class PedidoService {
 		return mMesa
 	}
 
-	def getIdUtilizacaoMesa_Pedido(params, session) {
+	def getIdpedidoCapa_Pedido(params, session) {
 		def acao = params['acao'].toString()
 		def vvmesa = numeroService.getInt(params['mesa'].toString())
 		def vvpedido = (long)numeroService.getInt(params['pedido'].toString())
-		def uPedido = UtilizacaoMesa.createCriteria().list() {
+		def uPedido = PedidoCapa.createCriteria().list() {
 			and{
 				eq("estab", session.estab)
 				mesa{ eq("numero", vvmesa)}
 				if(acao.equals("pedidoanterior")){
-					if(vvpedido == getUtilizacaoMesa (false, params, session))
+					if(vvpedido == getpedidoCapa (false, params, session))
 						eq("id", vvpedido)
 					else{
 						lt("id", vvpedido)
 						order("id", "desc")
 					}
 				}else if(acao.equals("pedidoproximo")){
-					if(vvpedido == getUtilizacaoMesa (true, params, session))
+					if(vvpedido == getpedidoCapa (true, params, session))
 						eq("id", vvpedido)
 					else{
 						gt("id", vvpedido)
@@ -108,9 +108,9 @@ class PedidoService {
 			return 0
 	}
 
-	def getIdUtilizacaoMesa_Mesa(params, session) {
+	def getIdpedidoCapa_Mesa(params, session) {
 		def acao = params['acao'].toString()
-		def uPedido = UtilizacaoMesa.createCriteria().list() {
+		def uPedido = PedidoCapa.createCriteria().list() {
 			eq("estab", session.estab)
 			if (params['mesa'] == null){
 				maxResults(1)
@@ -151,14 +151,14 @@ class PedidoService {
 	def getUPedido(params, session){
 		def uPedido
 		if(params['pedido'] != null)
-			uPedido = getIdUtilizacaoMesa_Pedido(params, session)
+			uPedido = getIdpedidoCapa_Pedido(params, session)
 		else
-			uPedido = getIdUtilizacaoMesa_Mesa(params, session)
+			uPedido = getIdpedidoCapa_Mesa(params, session)
 		return uPedido
 	}
 
 	def getSeq(pedidoInstance, params){
-		def seq = pedidoInstance.count()>0? pedidoInstance.list().last().codigo:0
+		def seq = pedidoInstance.count()>0? pedidoInstance.list().last().sequencia:0
 		if(params['sequencia'] != null && pedidoInstance.count() > 0){
 			def seqP = numeroService.getInt(params['sequencia'].toString())
 			if(params['acao'].equals("sequenciaanterior")){
@@ -179,10 +179,10 @@ class PedidoService {
 		if(pedidoInstance.count() > 0){
 			Pedido p = pedidoInstance.list().last();
 			return "<script>jQuery('input')[1].value= '" + p.mesa  + "';" +
-				   "jQuery('input')[4].value= '" + p.utilizacaoMesa.id  + "';" +
+				   "jQuery('input')[4].value= '" + p.pedidoCapa.id  + "';" +
 				   (reimpressao?
-				   "jQuery('input')[7].value= '" + p.codigo  + "';" +
-				   "jQuery('input')[9].value= '" + p.utilizacaoMesa.dataFim  + "';":"") +
+				   "jQuery('input')[7].value= '" + p.sequencia  + "';" +
+				   "jQuery('input')[9].value= '" + p.pedidoCapa.dataFim  + "';":"") +
 				   "</script>"
 		}else
 			return ""

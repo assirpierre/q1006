@@ -48,7 +48,7 @@
 							<g:message code="pedido.label" default="Pedido" />:
 						</label>
 						<input onclick="${remoteFunction(controller:'pedido', action:'listpmesa',update:'target', params:'\'acao=pedidoanterior&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value')}" type="button" value="<g:message code="default.anterior.label" />"></input>
-						<input type="text" size="3" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.id:""}"  disabled />
+						<input type="text" size="3" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.id:""}"  disabled />
 						<input onclick="${remoteFunction(controller:'pedido', action:'listpmesa',update:'target', params:'\'acao=pedidoproximo&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value')}" type="button" value="<g:message code="default.proximo.label" />"></input>
 					</td>
 					<td>

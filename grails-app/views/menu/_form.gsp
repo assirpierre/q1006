@@ -9,24 +9,26 @@
 	</label>
 	<g:select id="menuPrincipal" name="menuPrincipal.id" from="${qmw.MenuPrincipal.findAllByEstab(session.estab)}" optionKey="id" required="" value="${menuInstance?.menuPrincipal?.id}" class="many-to-one" noSelection="['': '']"/>
     <g:helpBalloon code="menu.menuPrincipal.label"/>
+    <g:set var="entityName" value="${message(code: 'menuPrincipal.label', default: 'menuPrincipal')}" />
+    <div class="linkadd">
+        <g:link controller="menuPrincipal" class="list" action="create"><g:message code="default.adicionar.label" /></g:link>
+    </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'item', 'error')} required">
-	<label for="item">
-		<g:message code="menu.item.label" default="Item" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'nome', 'error')} ">
+	<label for="nome">
+		<g:message code="menu.nome.label" default="nome" />
 	</label>
-	<g:select id="item" name="item.id" from="${qmw.Item.findAllByTipoAndAprovado("Produto", true)}" optionKey="id" required="" value="${menuInstance?.item?.id}" class="many-to-one" noSelection="['': '']"/>
-    <g:helpBalloon code="menu.item.label"/>
+	<g:textField name="nome" size="30" maxlength="30" value="${menuInstance?.nome}"/>
+    <g:helpBalloon code="menu.nome.label"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'descricaoestab', 'error')} ">
-	<label for="descricaoestab">
-		<g:message code="menu.descricaoestab.label" default="Descricaoestab" />
-		
+<div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'descricao', 'error')} ">
+	<label for="descricao">
+		<g:message code="menu.descricao.label" default="descricao" />
 	</label>
-	<g:textField name="descricaoestab" size="70" maxlength="300" value="${adicionaisInstance?.descricaoestab}"/>
-    <g:helpBalloon code="menu.descricaoestab.label"/>
+	<g:textField name="descricao" size="70" maxlength="300" value="${menuInstance?.descricao}"/>
+    <g:helpBalloon code="menu.descricao.label"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'preco', 'error')} required">
@@ -45,6 +47,9 @@
 	</label>
 	<g:select id="grupoAdicionais" name="grupoAdicionais.id" from="${qmw.GrupoAdicionais.findAllByEstab(session.estab)}" optionKey="id" value="${menuInstance?.grupoAdicionais?.id}" noSelection="['': '']"/>
     <g:helpBalloon code="menu.grupoAdicionais.label"/>
+    <div class="linkadd">
+    <g:link controller="adicionais" class="list" action="create"><g:message code="default.adicionar.label" /></g:link>
+    </div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuInstance, field: 'sequencia', 'error')} required">

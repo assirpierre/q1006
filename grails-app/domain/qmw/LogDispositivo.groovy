@@ -11,7 +11,6 @@ class LogDispositivo {
     }
 	static mapping = {
 		dados type: 'text'
-		id generator:'native', params:[sequence:'log_dispositivoid_seq']
 	}
 
 }

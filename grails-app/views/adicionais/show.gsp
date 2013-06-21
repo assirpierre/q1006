@@ -31,21 +31,21 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${adicionaisInstance?.nome}">
+                    <li class="fieldcontain">
+                        <span id="nome-label" class="property-label"><g:message code="adicionais.nome.label" default="nome" /></span>
+
+                        <span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${adicionaisInstance}" field="nome"/></span>
+
+                    </li>
+                </g:if>
 			
-				<g:if test="${adicionaisInstance?.item}">
+				<g:if test="${adicionaisInstance?.descricao}">
 				<li class="fieldcontain">
-					<span id="item-label" class="property-label"><g:message code="adicionais.item.label" default="Item" /></span>
+					<span id="descricao-label" class="property-label"><g:message code="adicionais.descricao.label" default="descricao" /></span>
 					
-						<span class="property-value" aria-labelledby="item-label"><g:link controller="item" action="show" id="${adicionaisInstance?.item?.id}">${adicionaisInstance?.item?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${adicionaisInstance?.descricaoestab}">
-				<li class="fieldcontain">
-					<span id="descricaoestab-label" class="property-label"><g:message code="adicionais.descricaoestab.label" default="Descricaoestab" /></span>
-					
-						<span class="property-value" aria-labelledby="descricaoestab-label"><g:fieldValue bean="${adicionaisInstance}" field="descricaoestab"/></span>
+						<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${adicionaisInstance}" field="descricao"/></span>
 					
 				</li>
 				</g:if>
@@ -65,9 +65,6 @@
 					<g:hiddenField name="id" value="${adicionaisInstance?.id}" />
 					<g:link class="edit" action="edit" id="${adicionaisInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:link class="create" controller="menuPrincipal" action="create" params="['estabelecimento.id': estabelecimentoInstance?.id]">
-						${message(code: 'default.proximopasso.label', args: [message(code: 'usuario.label', default: 'Proximo passo')])}
-						${message(code: 'default.add.label', args: [message(code: 'menuPrincipal.label', default: 'Menu Principal')])}</g:link>
 				</fieldset>
 			</g:form>
 		</div>

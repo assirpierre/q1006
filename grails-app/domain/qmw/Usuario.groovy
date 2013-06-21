@@ -17,8 +17,8 @@ class Usuario {
 		senha(password: true, size: 5..15)
 		nome(blank:false)
 		email(email: true, blank:false)
-		
     }
+
 	static mapping = {
 		estab index: 'usuario_estab_Idx'
 	}

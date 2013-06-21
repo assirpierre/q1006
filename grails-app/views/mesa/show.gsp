@@ -47,9 +47,9 @@
 					<g:hiddenField name="id" value="${mesaInstance?.id}" />
 					<g:link class="edit" action="edit" id="${mesaInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-					<g:link class="create" controller="grupoAdicionais" action="create" params="['estabelecimento.id': estabelecimentoInstance?.id]">
-						${message(code: 'default.proximopasso.label', args: [message(code: 'usuario.label', default: 'Proximo passo')])}
-						${message(code: 'default.add.label', args: [message(code: 'grupoAdicionais.label', default: 'Grupo Adicionais')])}</g:link>
+                    <g:link class="create" controller="menu" action="create" params="['estabelecimento.id': estabelecimentoInstance?.id]">
+                        ${message(code: 'default.proximopasso.label', args: [message(code: 'usuario.label', default: 'Proximo passo')])}
+                        ${message(code: 'default.add.label', args: [message(code: 'menu.label', default: 'Menu')])}</g:link>
 				</fieldset>
 			</g:form>
 		</div>

@@ -35,7 +35,7 @@
 				<tr class="odd">
 					<td colspan=6></td>
 					<td style="text-align:right">${message(code: 'pedido.subTotal.label', default: 'subTotal')}:</td> 
-					<td style="text-align:right"><g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.subTotal:0}" type="currency" /> </td>
+					<td style="text-align:right"><g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.subTotal:0}" type="currency" /> </td>
 					<td></td>
 				</tr>
 				<tr class="odd">
@@ -43,8 +43,8 @@
 					<td style="text-align:right">${message(code: 'pedido.servico.label', default: 'Servico')}:</td> 
 					<td style="text-align:right">
 					<g:formRemote name="myForm1" on404="alert('not found!')" update="target" url="[controller: 'pedido', action:'atualizaServico']" >
-						<input type="text" style="text-align: right" size="10" name="servico" value="<g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.servico:0}" format="0.00" />"/> 
-						<input type="hidden" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.id:0}"/> 
+						<input type="text" style="text-align: right" size="10" name="servico" value="<g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.servico:0}" format="0.00" />"/>
+						<input type="hidden" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.id:0}"/>
 						<input type="hidden" name="mesa" value="${pedidoInstanceList? pedidoInstanceList.first().mesa:0}"/> 
 					</g:formRemote>
 					</td>
@@ -53,13 +53,13 @@
 				<tr class="odd">
 					<td colspan=6></td>
 					<td style="text-align:right">${message(code: 'pedido.total.label', default: 'Total')}:</td> 
-					<td style="text-align:right"><g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.total:0}" type="currency" /> </td>
+					<td style="text-align:right"><g:formatNumber number="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.total:0}" type="currency" /> </td>
 					<td></td>
 				</tr>
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${pedidoInstanceTotal}" params="${[mesa:pedidoInstanceList? pedidoInstanceList.first().mesa:"", pedido:pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.id:""]}"/>
+				<g:paginate total="${pedidoInstanceTotal}" params="${[mesa:pedidoInstanceList? pedidoInstanceList.first().mesa:"", pedido:pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.id:""]}"/>
 			</div>
 			
 			

@@ -22,9 +22,9 @@
 						<label for="menuPrincipal">
 							<g:message code="menu.menuPrincipal.label" default="menuPrincipal" />
 						</label>
-						<g:select name="menuPrincipal" from="${qmw.MenuPrincipal.findAllByEstab(session.estab)}" optionKey="id" 
+						<g:select name="menuPrincipal" from="${qmw.MenuPrincipal.findAllByEstab(session.estab)}" optionKey="id" value="${menuInstanceList? menuInstanceList.first().menuPrincipal.id:""}"
 						onchange="${remoteFunction(controller:'menu', action:'list',update:'target', params:'\'menuPrincipal=\' + this.value' )}" />
-					</td>
+                    </td>
 					<td>
 						<h1 style="margin: 0 0 0 0; border:none;"><g:message code="default.list.label" args="[entityName]" />   <g:helpBalloon code="menu.label" mostra="true"/></h1>
 					</td>

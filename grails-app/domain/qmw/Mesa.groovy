@@ -7,8 +7,6 @@ class Mesa {
 	Date dataultsituacao = new Date();
 	String nome
 	static belongsTo = [estab: Estabelecimento]
-	static hasMany = [pedido: Pedido, utilizacaoMesa: UtilizacaoMesa]
-
 	
 	String toString () {
 		"${numero}"

@@ -2,19 +2,20 @@ package qmw
 
 class Menu {
 
-	String descricaoestab
+    String nome
+	String descricao
 	double preco
 	int sequencia
-	static belongsTo = [estab: Estabelecimento, grupoAdicionais: GrupoAdicionais, menuPrincipal: MenuPrincipal, item: Item]
+	static belongsTo = [estab: Estabelecimento, grupoAdicionais: GrupoAdicionais, menuPrincipal: MenuPrincipal]
 
 	String toString () {
-		"${item}"
+		"${nome}"
 	}
 
 	static constraints = {
 		menuPrincipal(blank:false)
-		item(blank: false, unique: ['estab','menuPrincipal'])
-		descricaoestab(maxSize: 300)
+        nome(maxSize: 30, blank:false)
+		descricao(maxSize: 300)
 		preco(blank: false, matches: /\d+/)
 		grupoAdicionais(nullable: true)
 	}

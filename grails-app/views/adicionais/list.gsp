@@ -26,9 +26,9 @@
 					
 						<th><g:message code="adicionais.grupoAdicionais.label" default="Grupo Adicionais" /></th>
 					
-						<th><g:message code="adicionais.item.label" default="Item" /></th>
+						<th><g:message code="adicionais.nome.label" default="nome" /></th>
 					
-						<g:sortableColumn property="descricaoestab" title="${message(code: 'adicionais.descricaoestab.label', default: 'Descricaoestab')}" />
+						<g:sortableColumn property="descricao" title="${message(code: 'adicionais.descricao.label', default: 'descricao')}" />
 					
 						<g:sortableColumn property="preco" title="${message(code: 'adicionais.preco.label', default: 'Preco')}" />
 					
@@ -40,9 +40,9 @@
 					
 						<td><g:link action="show" id="${adicionaisInstance.id}">${fieldValue(bean: adicionaisInstance, field: "grupoAdicionais")}</g:link></td>
 					
-						<td>${fieldValue(bean: adicionaisInstance, field: "item")}</td>
+						<td>${fieldValue(bean: adicionaisInstance, field: "nome")}</td>
 					
-						<td>${fieldValue(bean: adicionaisInstance, field: "descricaoestab")}</td>
+						<td>${fieldValue(bean: adicionaisInstance, field: "descricao")}</td>
 					
 						<td><g:formatNumber number="${adicionaisInstance.preco}" type="currency" /></td>
 					

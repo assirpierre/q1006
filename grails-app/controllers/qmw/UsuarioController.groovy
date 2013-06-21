@@ -35,7 +35,7 @@ class UsuarioController {
 		
 	def auth() {
 		if(!session.estab) {
-			redirect(controller:"Estabelecimento", action:"../")
+            redirect(controller:"Estabelecimento")
 			return false
 		}
 	}

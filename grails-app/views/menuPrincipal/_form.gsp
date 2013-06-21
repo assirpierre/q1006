@@ -2,13 +2,12 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: menuPrincipalInstance, field: 'item', 'error')} required">
-	<label for="item">
-		<g:message code="menuPrincipal.item.label" default="Item" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="item" name="item.id" from="${qmw.Item.findAllByTipoAndAprovado("Menu", true)}" optionKey="id" required="" value="${menuPrincipalInstance?.item?.id}" class="many-to-one" noSelection="['': '']"/>
-    <g:helpBalloon code="menuPrincipal.item.label"/>
+<div class="fieldcontain ${hasErrors(bean: menuPrincipalInstance, field: 'nome', 'error')} ">
+    <label for="nome">
+        <g:message code="menuPrincipal.nome.label" default="nome" />
+    </label>
+    <g:textField name="nome" size="30" maxlength="30" value="${menuPrincipalInstance?.nome}"/>
+    <g:helpBalloon code="menuPrincipal.nome.label"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: menuPrincipalInstance, field: 'qtdeitem', 'error')} required">

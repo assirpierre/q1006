@@ -2,7 +2,7 @@ package qmw
 
 import java.util.Date;
 
-class UtilizacaoMesa {
+class PedidoCapa {
 
 	String nome
 	Date dataInicio
@@ -21,7 +21,6 @@ class UtilizacaoMesa {
 		total(nullable: true)
 	}
 	static mapping = {
-		id generator:'native', params:[sequence:'utilizacao_mesaid_seq']
-		estab index: 'utilizacaoMesa_estab_Idx'
+		estab index: 'pedidoCapa_estab_Idx'
 	}
 }

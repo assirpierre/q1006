@@ -113,6 +113,9 @@ class EstabelecimentoController {
         if (!estabelecimentoInstance.save(flush: true)) {
             render(view: "edit", model: [estabelecimentoInstance: estabelecimentoInstance])
             return
+        }else{
+            if (params['geraCadastro'])
+                estabelecimentoService.criarModelo (estabelecimentoInstance)
         }
 
         flash.message = message(code: 'default.updated.message', args: [message(code: 'estabelecimento.label', default: 'Estabelecimento'), estabelecimentoInstance.id])

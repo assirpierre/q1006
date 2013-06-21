@@ -22,7 +22,7 @@
 	</head>
 	<body>
         <img src="${resource(dir: 'images', file: 'back' + (session.back?session.back:1) + '.jpg')}" id="bg" />
-        <table class="tablebody" >
+        <table class="tablebody">
             <tr>
                 <td height="84" bgcolor="#FFFFFF">
                     <table class="tableconteudo" >

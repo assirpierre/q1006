@@ -48,16 +48,16 @@
 							<g:message code="pedido.label" default="Pedido" />:
 						</label>
 						<input onclick="${remoteFunction(controller:'pedido', action:'listreimpressao',update:'target', params:'\'acao=pedidoanterior&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value')}" type="button" value="<g:message code="default.anterior.label" />"></input>
-						<input type="text" size="3" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.id:""}"  disabled />
+						<input type="text" size="3" name="pedido" value="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.id:""}"  disabled />
 						<input onclick="${remoteFunction(controller:'pedido', action:'listreimpressao',update:'target', params:'\'acao=pedidoproximo&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value')}" type="button" value="<g:message code="default.proximo.label" />"></input>
 						
 						<label for="sequencia">
 							<g:message code="pedido.codigo.label" default="Sequencia" />:
 						</label>
 						<input onclick="${remoteFunction(controller:'pedido', action:'listreimpressao',update:'target', params:'\'acao=sequenciaanterior&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value+ \'&sequencia=\' + jQuery(\'input\')[7].value')}" type="button" value="<g:message code="default.anterior.label" />"></input>
-						<input type="text" size="1" name="sequencia" value="${pedidoInstanceList? pedidoInstanceList.first().codigo:""}" disabled" />
+						<input type="text" size="1" name="sequencia" value="${pedidoInstanceList? pedidoInstanceList.first().sequencia:""}" disabled" />
 						<input onclick="${remoteFunction(controller:'pedido', action:'listreimpressao',update:'target', params:'\'acao=sequenciaproximo&mesa=\' + jQuery(\'input\')[1].value + \'&pedido=\' + jQuery(\'input\')[4].value+ \'&sequencia=\' + jQuery(\'input\')[7].value')}" type="button" value="<g:message code="default.proximo.label" />"></input>
-						<input type="hidden" size="1" name="finalizado" value="${pedidoInstanceList? pedidoInstanceList.first().utilizacaoMesa.dataFim:""}" disabled" />
+						<input type="hidden" size="1" name="finalizado" value="${pedidoInstanceList? pedidoInstanceList.first().pedidoCapa.dataFim:""}" disabled" />
 					</td>
 					<td>
 						<h1 style="margin: 0 0 0 0; border:none;"><g:message code="reimpressao.label" />   <g:helpBalloon code="reimpressao.label" mostra="true"/></h1>
