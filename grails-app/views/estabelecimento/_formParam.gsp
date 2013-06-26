@@ -56,11 +56,3 @@
     <g:select name="sistemaTrabalho" required=""  from="${estabelecimentoInstance.constraints.sistemaTrabalho.inList}" value="${estabelecimentoInstance?.sistemaTrabalho}" valueMessagePrefix="estabelecimento.sistemaTrabalho" noSelection="['': '']"/>
     <g:helpBalloon code="estabelecimento.sistemaTrabalho.label"/>
 </div>
-
-<div class="fieldcontain">
-    <label for="geraCadastro">
-        <g:message code="estabelecimento.geraCadastro.label" default="geraCadastro" />
-    </label>
-    <g:checkBox name="geraCadastro" value="true" />
-    <g:helpBalloon code="estabelecimento.geraCadastro.label"/>
-</div>

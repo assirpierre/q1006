@@ -1,5 +1,7 @@
 package qmw
 
+import grails.converters.JSON
+
 
 class PedidoController {
 	def pedidoService
@@ -81,7 +83,7 @@ class PedidoController {
 			}
 			if(pedidoNaoImpresso.count() > 0){
 				Pedido p = pedidoNaoImpresso.list().first();
-				render "<script>jQuery('#relatorio')[0].src= '../ImpressaoCupom/pedido?cupomId=" + p.pedidoCapa.id  + "&sequencia=" + p.sequencia + "';</script>"
+				render "<script>jQuery('#relatorio')[0].src= '../ImpressaoCupom/pedido?cupomId=" + p.pedidoCapa.id  + "&sequencia=" + p.sequencia + "&local=" + lAtendimento + "';</script>"
 			}
 			if(session.estab.localFechamento == lAtendimento){
 				def fechamentoNaoImpresso = pedidoService.getFechamentoNaoImpresso(session)
@@ -103,9 +105,16 @@ class PedidoController {
 	}
 
 	def auth() {
-		if(!session.estab) {
-            redirect(controller:"Estabelecimento")
-			return false
-		}
+//		if(!session.estab) {
+//            redirect(controller:"Estabelecimento")
+//			return false
+//		}
 	}
+
+    def grava(){
+        println "Here is request.JSON: ${request.JSON as JSON}"
+        println "Here is params: $params"
+        //do awesome stuff with request.JSON only
+        render "ok maça até"
+    }
 }

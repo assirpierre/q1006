@@ -48,12 +48,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{cabecCupom}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement uuid="3d56f597-364e-4c10-966d-72d0ff16436e" x="2" y="76" width="202" height="1"/>
-				<graphicElement>
-					<pen lineWidth="0.5"/>
-				</graphicElement>
-			</line>
 			<textField>
 				<reportElement uuid="b60f90d3-0891-4528-a6b5-44bee52edcfa" x="179" y="67" width="25" height="10"/>
 				<textElement textAlignment="Right" markup="none">
@@ -95,45 +89,32 @@
 			</textField>
 		</band>
 	</title>
-	<pageHeader>
-		<band splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="12" splitType="Stretch">
-			<textField pattern="###0">
-				<reportElement uuid="4f7afe99-1061-4c58-b073-8ec29580f76a" x="184" y="0" width="20" height="12"/>
-				<textElement textAlignment="Right">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{qtde}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement uuid="c073c8e1-8219-4572-8bd7-571b5b45e579" x="2" y="0" width="181" height="12"/>
-				<textElement>
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{item} +
-($F{itemDescricao}.equals("")?"":" (" + $F{itemDescricao} + ")") +
-($F{itemAdicional}.equals("")?"":"\nAD:" + $F{itemAdicional}) +
-($F{itemAdicionalDescricao}.equals("")?"":"(" + $F{itemAdicionalDescricao} + ")") +
-($F{observacao}.equals("")?"":"\nOBS:" + $F{observacao})]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<columnFooter>
-		<band splitType="Stretch"/>
-	</columnFooter>
-	<summary>
-		<band height="3" splitType="Stretch">
+		<band height="13" splitType="Stretch">
 			<line>
 				<reportElement uuid="9f995566-3f79-48c7-bdf5-6985987753fa" x="2" y="0" width="202" height="1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<textField pattern="###0">
+				<reportElement uuid="4f7afe99-1061-4c58-b073-8ec29580f76a" x="184" y="1" width="20" height="12"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{qtde}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c073c8e1-8219-4572-8bd7-571b5b45e579" x="2" y="1" width="182" height="12"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item} +
+($F{itemDescricao}.equals("")?"":" (" + $F{itemDescricao} + ")") +
+($F{itemAdicional}.equals("")?"":"\n   AD:" + $F{itemAdicional}) +
+($F{itemAdicionalDescricao}.equals("")?"":"(" + $F{itemAdicionalDescricao} + ")") +
+($F{observacao}.equals("")?"":"\n   OBS:" + $F{observacao})]]></textFieldExpression>
+			</textField>
 		</band>
-	</summary>
+	</detail>
 </jasperReport>

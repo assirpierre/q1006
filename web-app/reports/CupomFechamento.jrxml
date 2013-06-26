@@ -169,21 +169,15 @@ $F{item} + ($F{itemAdicional}.equals("")?"":" a:" + $F{itemAdicional})]]></textF
 	<columnFooter>
 		<band splitType="Stretch"/>
 	</columnFooter>
-	<summary>
-		<band height="47" splitType="Stretch">
-			<textField>
-				<reportElement uuid="83748d35-53a3-4744-8c59-12c3422dd16f" x="2" y="0" width="59" height="10"/>
-				<textElement markup="none">
+	<pageFooter>
+		<band height="103">
+			<textField pattern="###0.00">
+				<reportElement uuid="11f3734f-dc87-4cc7-8a65-11e6d2a1ac55" x="133" y="20" width="71" height="10"/>
+				<textElement textAlignment="Right">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{subTotal.label}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pedidoCapa.total}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement uuid="9f995566-3f79-48c7-bdf5-6985987753fa" x="2" y="0" width="202" height="1"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
 			<textField pattern="###0.00">
 				<reportElement uuid="174f7b9d-e372-4365-b19a-3f44d972d77e" x="133" y="0" width="71" height="10"/>
 				<textElement textAlignment="Right">
@@ -192,25 +186,11 @@ $F{item} + ($F{itemAdicional}.equals("")?"":" a:" + $F{itemAdicional})]]></textF
 				<textFieldExpression><![CDATA[$F{pedidoCapa.subTotal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="9cc1a557-9396-49e1-97d6-89b8e3359a8f" x="2" y="37" width="202" height="10"/>
-				<textElement textAlignment="Center" markup="none">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{rodapeCupom}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="3c612251-2457-4c58-81c9-cc8e5e57012a" x="2" y="10" width="59" height="10"/>
+				<reportElement uuid="83748d35-53a3-4744-8c59-12c3422dd16f" x="2" y="0" width="59" height="10"/>
 				<textElement markup="none">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{servico.label}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="3a8c3326-bb5d-49b4-af6f-c9e3096c5169" x="2" y="20" width="59" height="10"/>
-				<textElement markup="none">
-					<font size="8" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{total.label}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{subTotal.label}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement uuid="739b9798-cc55-4fee-9096-dc61ad16bf6d" x="133" y="10" width="71" height="10"/>
@@ -219,13 +199,48 @@ $F{item} + ($F{itemAdicional}.equals("")?"":" a:" + $F{itemAdicional})]]></textF
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pedidoCapa.servico}]]></textFieldExpression>
 			</textField>
-			<textField pattern="###0.00">
-				<reportElement uuid="11f3734f-dc87-4cc7-8a65-11e6d2a1ac55" x="133" y="20" width="71" height="10"/>
-				<textElement textAlignment="Right">
+			<textField>
+				<reportElement uuid="3a8c3326-bb5d-49b4-af6f-c9e3096c5169" x="2" y="20" width="59" height="10"/>
+				<textElement markup="none">
 					<font size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pedidoCapa.total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{total.label}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement uuid="3c612251-2457-4c58-81c9-cc8e5e57012a" x="2" y="10" width="59" height="10"/>
+				<textElement markup="none">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{servico.label}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="9f995566-3f79-48c7-bdf5-6985987753fa" x="2" y="0" width="202" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="9cc1a557-9396-49e1-97d6-89b8e3359a8f" x="2" y="91" width="202" height="10"/>
+				<textElement textAlignment="Center" markup="none">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rodapeCupom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7ca84933-4a44-4b5b-9ee3-a10b8b7149e0" x="19" y="35" width="173" height="56"/>
+				<textElement markup="none">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Favor informar CPJ/CNPJ (Facultativo) para constar no cupom fiscal.
+Lei Estadual n. 12.685 de 28 de agosto de 2007 referente a nota fiscal paulista
+CPF/CNPJ:]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="b9121c42-74d3-49f7-ac0b-a82805293aa9" x="61" y="81" width="118" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
-	</summary>
+	</pageFooter>
 </jasperReport>

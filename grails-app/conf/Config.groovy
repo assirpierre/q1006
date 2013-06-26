@@ -69,7 +69,7 @@ environments {
     production {
         grails.logging.jul.usebridge = false
 		jasper.dir.reports = '../reports'
-        //grails.serverURL = "http://www.qmenu.com.br/"
+//        grails.serverURL = "http://www.qmenu.com.br:8080/"
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }

@@ -1,5 +1,6 @@
 package qmw
 
+import grails.converters.JSON
 import grails.converters.XML
 
 class MenuController {
@@ -70,6 +71,7 @@ class MenuController {
 	}
 
     def exporta() {
-        render MenuPrincipal.where{estab.id == 218}.list() + Menu.where{estab.id == 218}.list() as XML;
+        render MenuPrincipal.where{id == 240}.list() as JSON
+//        render MenuPrincipal.where{estab.id == 218}.list() + Menu.where{estab.id == 218}.list() as XML;
     }
 }

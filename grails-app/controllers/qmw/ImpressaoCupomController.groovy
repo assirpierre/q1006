@@ -14,10 +14,13 @@ class ImpressaoCupomController {
 	def pedido() {
 		def cumpomID = (long)Integer.parseInt(params['cupomId'])
 		def sequencia = Integer.parseInt(params['sequencia'])
+        def local = params['local']
 		def pedidoInstance = Pedido.where {
 			pedidoCapa.id == cumpomID
 			and
-			Pedido.sequencia == sequencia
+			sequencia == sequencia
+            and
+            menuPrincipal.localAtendimento == local
 		}
 		HashMap<String,String> parameters = new HashMap<String,String>()
 		parameters.put("IMAGE_DIR","${servletContext.getRealPath('/images')}/")
